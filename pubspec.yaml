@@ -1,0 +1,15 @@
+name: base58check
+description: Base58Check encoding using dart:convert interface
+version: 0.1.0
+author: Steven Roose <stevenroose@gmail.com>
+homepage: https://github.com/dartcoin/base58check
+
+environment:
+  sdk: ">=1.0.0 <2.0.0"
+
+dependencies:
+  collection: ">=1.2.0 <2.0.0"
+
+dev_dependencies:
+  crypto: ">=0.9.1 <0.10.0"
+  test: ">=0.12.0 <0.13.0"
