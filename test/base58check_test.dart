@@ -1,7 +1,7 @@
 library base58check.test.base58check;
 
 import "package:test/test.dart";
-import "package:crypto/crypto.dart" show SHA256;
+import "package:crypto/crypto.dart";
 
 import "package:base58check/base58check.dart";
 
@@ -50,11 +50,7 @@ List<List<String>> _bitcoinVectors = [
 ];
 
 String _alphabet = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
-List _sha(List bytes) {
-  SHA256 sha = new SHA256();
-  sha.add(bytes);
-  return sha.close();
-}
+List _sha(List bytes) => sha256.convert(bytes).bytes;
 
 Base58CheckCodec _codec = new Base58CheckCodec(_alphabet, _sha);
 
@@ -74,6 +70,3 @@ main() {
     });
   });
 }
-
-
-

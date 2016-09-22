@@ -3,7 +3,7 @@ library base58check;
 import "dart:convert";
 import "dart:typed_data";
 
-import "package:collection/equality.dart" show ListEquality;
+import "package:collection/collection.dart" show ListEquality;
 
 import "base58.dart";
 
@@ -34,7 +34,8 @@ class Base58CheckCodec extends Codec<Base58CheckPayload, String> {
   final String alphabet;
   final Function sha256;
 
-  const Base58CheckCodec(String this.alphabet, Function this.sha256);
+  const Base58CheckCodec(String this.alphabet,
+      List<int> this.sha256(List<int> message));
 
   @override
   Converter<Base58CheckPayload, String> get encoder =>
@@ -52,7 +53,8 @@ class Base58CheckEncoder extends Converter<Base58CheckPayload, String> {
   final String alphabet;
   final Function sha256;
 
-  const Base58CheckEncoder(String this.alphabet, Function this.sha256);
+  const Base58CheckEncoder(String this.alphabet,
+      List<int> this.sha256(List<int> message));
 
   @override
   String convert(Base58CheckPayload payload) {
@@ -69,7 +71,8 @@ class Base58CheckDecoder extends Converter<String, Base58CheckPayload> {
   final String alphabet;
   final Function sha256;
 
-  const Base58CheckDecoder(String this.alphabet, Function this.sha256);
+  const Base58CheckDecoder(String this.alphabet,
+      List<int> this.sha256(List<int> message));
 
   @override
   Base58CheckPayload convert(String encoded) => _convert(encoded, true);
