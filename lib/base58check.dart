@@ -12,7 +12,8 @@ class Base58CheckPayload {
   final List<int> payload;
   const Base58CheckPayload(int this.version, List<int> this.payload);
   @override
-  bool operator ==(Object other) => other is Base58CheckPayload &&
+  bool operator ==(Object other) =>
+      other is Base58CheckPayload &&
       version == other.version &&
       const ListEquality().equals(payload, other.payload);
   @override
@@ -34,8 +35,8 @@ class Base58CheckCodec extends Codec<Base58CheckPayload, String> {
   final String alphabet;
   final Function sha256;
 
-  const Base58CheckCodec(String this.alphabet,
-      List<int> this.sha256(List<int> message));
+  const Base58CheckCodec(
+      String this.alphabet, List<int> this.sha256(List<int> message));
 
   @override
   Converter<Base58CheckPayload, String> get encoder =>
@@ -53,8 +54,8 @@ class Base58CheckEncoder extends Converter<Base58CheckPayload, String> {
   final String alphabet;
   final Function sha256;
 
-  const Base58CheckEncoder(String this.alphabet,
-      List<int> this.sha256(List<int> message));
+  const Base58CheckEncoder(
+      String this.alphabet, List<int> this.sha256(List<int> message));
 
   @override
   String convert(Base58CheckPayload payload) {
@@ -71,8 +72,8 @@ class Base58CheckDecoder extends Converter<String, Base58CheckPayload> {
   final String alphabet;
   final Function sha256;
 
-  const Base58CheckDecoder(String this.alphabet,
-      List<int> this.sha256(List<int> message));
+  const Base58CheckDecoder(
+      String this.alphabet, List<int> this.sha256(List<int> message));
 
   @override
   Base58CheckPayload convert(String encoded) => _convert(encoded, true);

@@ -40,8 +40,8 @@ class Base58Encoder extends Converter<List<int>, String> {
 
     // count number of leading zeros
     int leadingZeroes = 0;
-    while (leadingZeroes < bytes.length &&
-        bytes[leadingZeroes] == 0) leadingZeroes++;
+    while (leadingZeroes < bytes.length && bytes[leadingZeroes] == 0)
+      leadingZeroes++;
 
     String output = "";
     int startAt = leadingZeroes;
@@ -52,8 +52,8 @@ class Base58Encoder extends Converter<List<int>, String> {
     }
 
     if (output.length > 0) {
-      while (
-          output[0] == alphabet[0]) output = output.substring(1, output.length);
+      while (output[0] == alphabet[0])
+        output = output.substring(1, output.length);
     }
     while (leadingZeroes-- > 0) output = alphabet[0] + output;
 
@@ -91,15 +91,16 @@ class Base58Decoder extends Converter<String, List<int>> {
     List<int> input58 = new List(input.length);
     for (int i = 0; i < input.length; i++) {
       int charint = alphabet.indexOf(input[i]);
-      if (charint < 0) throw new FormatException(
-          "Invalid input formatting for Base58 decoding.");
+      if (charint < 0)
+        throw new FormatException(
+            "Invalid input formatting for Base58 decoding.");
       input58[i] = charint;
     }
 
     // count leading zeroes
     int leadingZeroes = 0;
-    while (leadingZeroes < input58.length &&
-        input58[leadingZeroes] == 0) leadingZeroes++;
+    while (leadingZeroes < input58.length && input58[leadingZeroes] == 0)
+      leadingZeroes++;
 
     // decode
     Uint8List output = new Uint8List(input.length);
