@@ -201,10 +201,7 @@ List<List<String>> _bitcoinVectors = [
   ]
 ];
 
-String _alphabet = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
-List _sha(List bytes) => sha256.convert(bytes).bytes;
-
-Base58CheckCodec _codec = new Base58CheckCodec(_alphabet, _sha);
+Base58CheckCodec _codec = new Base58CheckCodec.bitcoin();
 
 main() {
   group("core.Base58Check", () {
