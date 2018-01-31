@@ -1,7 +1,6 @@
 library base58check.test.base58check;
 
 import "package:test/test.dart";
-import "package:crypto/crypto.dart";
 
 import "package:base58check/base58check.dart";
 
