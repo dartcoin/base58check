@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1
+
+Support Dart v2.
+
 ## 1.0.0
 
 - Simplified interface to remove external SHA-256 requirement

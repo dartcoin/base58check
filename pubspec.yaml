@@ -1,6 +1,6 @@
 name: base58check
 description: Base58Check encoding using dart:convert interface
-version: 1.0.0
+version: 1.0.1
 author: Steven Roose <stevenroose@gmail.com>
 homepage: https://github.com/dartcoin/base58check
 
