@@ -88,7 +88,7 @@ class Base58Decoder extends Converter<String, List<int>> {
     if (input.length == 0) return new Uint8List(0);
 
     // generate base 58 index list from input string
-    List<int> input58 = new List(input.length);
+    var input58 = List<int>.filled(input.length, 0);
     for (int i = 0; i < input.length; i++) {
       int charint = alphabet.indexOf(input[i]);
       if (charint < 0)
