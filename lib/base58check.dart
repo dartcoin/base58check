@@ -35,20 +35,23 @@ class Base58CheckPayload {
 class Base58CheckCodec extends Codec<Base58CheckPayload, String> {
   static const BITCOIN_ALPHABET =
       "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+  static const RIPPLE_ALPHABET =
+      "rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz";
 
   final String alphabet;
 
   Base58CheckEncoder _encoder;
   Base58CheckDecoder _decoder;
 
-  Base58CheckCodec(String this.alphabet) :
-        _encoder = new Base58CheckEncoder(alphabet),
+  Base58CheckCodec(String this.alphabet)
+      : _encoder = new Base58CheckEncoder(alphabet),
         _decoder = new Base58CheckDecoder(alphabet);
-
 
   /// A codec that works with the Bitcoin alphabet and the SHA256 hash function.
   Base58CheckCodec.bitcoin() : this(BITCOIN_ALPHABET);
 
+  /// A codec that works with the Ripple alphabet and the SHA256 hash function.
+  Base58CheckCodec.ripple() : this(RIPPLE_ALPHABET);
 
   @override
   Converter<Base58CheckPayload, String> get encoder => _encoder;
